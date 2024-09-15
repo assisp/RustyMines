@@ -1,0 +1,8 @@
+[package]
+name = "rustymines"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rand = "*"
+eframe = "0.28"
