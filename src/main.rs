@@ -27,12 +27,12 @@ fn main() {
     // set the window frame viewport size
     let mut options = eframe::NativeOptions::default();
     options.viewport.inner_size = Some(egui::Vec2 { 
-        x: (CELL_SIZE + 1.0) * f32::from(COLS) + 14.,
-        y: (CELL_SIZE + 1.0) * f32::from(ROWS) + 104.
+        x: (CELL_SIZE + 1.0) * f32::from(COLS) + 16.,
+        y: (CELL_SIZE + 1.0) * f32::from(ROWS) + 58.
     });
     options.viewport.min_inner_size = Some(egui::Vec2 { 
-        x: (CELL_SIZE + 1.0) * 4. + 14., 
-        y: (CELL_SIZE + 1.0) * 4. + 54.
+        x: (CELL_SIZE + 1.0) * 4. + 16., 
+        y: (CELL_SIZE + 1.0) * 4. + 58.
     });
 
     let _ = eframe::run_native("RustyMines", options, 
@@ -73,6 +73,7 @@ pub struct MyTheme {
     pub base: Color32,
     pub mantle: Color32,
     pub crust: Color32,
+    pub black: Color32,
 }
 //Latte colors from catppuccin
 pub const LATTE: MyTheme = MyTheme {
@@ -102,6 +103,7 @@ pub const LATTE: MyTheme = MyTheme {
     base: Color32::from_rgb(239, 241, 245),
     mantle: Color32::from_rgb(230, 233, 239),
     crust: Color32::from_rgb(220, 224, 232),
+    black: Color32::from_rgb(0, 0, 0),
 };
 
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -480,7 +482,7 @@ impl eframe::App for AppGui {
                             egui::FontId::new(30.0, eframe::epaint::FontFamily::Proportional),
                         );
                         
-                        ui.visuals_mut().override_text_color = Some(Color32::BROWN);   
+                        ui.visuals_mut().override_text_color = Some(LATTE.black);   
                         let smile = match self.state {
                             1 => UTF8_WINNER,
                             2 => UTF8_LOOSER,
